@@ -15,6 +15,7 @@
 !src/
 !src/**/
 !src/**/*.vhd
+!src/**/*.vhdl
 !src/**/*.xdc
 !src/**/*.bd
 !src/**/*.bit
