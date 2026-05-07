@@ -54,12 +54,12 @@ begin
                 "1110000" when x"7",
                 "1111111" when x"8",
                 "1110011" when x"9",
-                "0000001" when x"A",
+                "1110111" when x"A",
                 "0011111" when x"B",
                 "0001101" when x"C",
                 "0111101" when x"D",
                 "1001111" when x"E",
-                "0000000" when x"F",
+                "1000111" when x"F",
                 "0000000" when others;
         
     -- Flipped mapping to o_seg_n to match constraints file
