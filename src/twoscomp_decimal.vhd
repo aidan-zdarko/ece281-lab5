@@ -8,7 +8,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 
-entity twos_comp is
+entity twoscomp_decimal is
     port (
         i_bin: in std_logic_vector(7 downto 0);
         o_sign: out std_logic;
@@ -16,9 +16,9 @@ entity twos_comp is
         o_tens: out std_logic_vector(3 downto 0);
         o_ones: out std_logic_vector(3 downto 0)
     );
-end twos_comp;
+end twoscomp_decimal;
 
-architecture Behavioral of twos_comp is
+architecture Behavioral of twoscomp_decimal is
 begin
     process(i_bin)
         variable binary_value: integer;
