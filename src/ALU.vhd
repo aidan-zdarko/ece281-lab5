@@ -41,8 +41,8 @@ end ALU;
 
 architecture Behavioral of ALU is
     
-    signal result               : unsigned(8 downto 0); -- need the extra bit for any carry if necessary
-    signal RegisterA, RegisterB : unsigned(8 downto 0);
+    signal result               : unsigned(8 downto 0) := (others => '0'); -- need the extra bit for any carry if necessary
+    signal RegisterA, RegisterB : unsigned(8 downto 0) := (others => '0');
     signal result_output        : std_logic_vector(7 downto 0);
     
 begin
@@ -67,7 +67,9 @@ begin
     
     o_flags(3) <= result(7); -- negative sign
     o_flags(2) <= '1' when result(7 downto 0) = 0 else '0'; -- zero (at all bits)
-    o_flags(1) <= result(8) when (i_op = "000" or i_op = "001") else '0'; -- carry
+    o_flags(1) <= result(8) when (i_op = "000") else 
+                  not result(8) when (i_op = "001") else
+                  '0'; -- carry
     -- overflow is whether the signs are the same and get a different signed answer. different for addition/subtraction           
     o_flags(0) <= ((i_A(7) xnor i_B(7)) and (i_A(7) xor result(7))) when i_op = "000" else
                   ((i_A(7) xor i_B(7)) and (i_A(7) xor result(7))) when i_op = "001" else 
